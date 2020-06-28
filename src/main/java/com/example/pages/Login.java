@@ -1,7 +1,5 @@
 package com.example.pages;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.apache.tapestry5.alerts.AlertManager;
 import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.Property;
@@ -11,8 +9,6 @@ import org.apache.tapestry5.corelib.components.TextField;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
 public class Login {
-
-    private static final Logger logger = LogManager.getLogger(Login.class);
 
     @Inject
     private AlertManager alertManager;
@@ -41,13 +37,11 @@ public class Login {
     }
 
     Object onSuccessFromLogin() {
-        logger.info("Login successful!");
         alertManager.success("Welcome aboard!");
         return Index.class;
     }
 
     void onFailureFromLogin() {
-        logger.warn("Login error!");
         alertManager.error("I'm sorry but I can't log you in!");
     }
 }

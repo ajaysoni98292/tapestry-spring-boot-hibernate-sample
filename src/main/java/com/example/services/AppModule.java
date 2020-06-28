@@ -12,7 +12,6 @@ import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.RequestFilter;
 import org.apache.tapestry5.services.RequestHandler;
 import org.apache.tapestry5.services.Response;
-import org.slf4j.Logger;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -93,31 +92,31 @@ public class AppModule
      * a service named "RequestFilter" we use an explicit service id that we can reference
      * inside the contribution method.
      */
-    public RequestFilter buildTimingFilter(final Logger log)
-    {
-        return new RequestFilter()
-        {
-            public boolean service(Request request, Response response, RequestHandler handler)
-            throws IOException
-            {
-                long startTime = System.currentTimeMillis();
-
-                try
-                {
-                    // The responsibility of a filter is to invoke the corresponding method
-                    // in the handler. When you chain multiple filters together, each filter
-                    // received a handler that is a bridge to the next filter.
-
-                    return handler.service(request, response);
-                } finally
-                {
-                    long elapsed = System.currentTimeMillis() - startTime;
-
-                    log.info("Request time: {} ms", elapsed);
-                }
-            }
-        };
-    }
+//    public RequestFilter buildTimingFilter(final Logger log)
+//    {
+//        return new RequestFilter()
+//        {
+//            public boolean service(Request request, Response response, RequestHandler handler)
+//            throws IOException
+//            {
+//                long startTime = System.currentTimeMillis();
+//
+//                try
+//                {
+//                    // The responsibility of a filter is to invoke the corresponding method
+//                    // in the handler. When you chain multiple filters together, each filter
+//                    // received a handler that is a bridge to the next filter.
+//
+//                    return handler.service(request, response);
+//                } finally
+//                {
+//                    long elapsed = System.currentTimeMillis() - startTime;
+//
+//                    log.info("Request time: {} ms", elapsed);
+//                }
+//            }
+//        };
+//    }
 
     /**
      * This is a contribution to the RequestHandler service configuration. This is how we extend

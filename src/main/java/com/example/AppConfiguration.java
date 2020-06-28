@@ -17,20 +17,17 @@ import javax.servlet.SessionTrackingMode;
 import java.util.EnumSet;
 
 @Configuration
-@ComponentScan({ "com.example" })
-public class AppConfiguration
-{
+@ComponentScan({"com.example"})
+public class AppConfiguration {
 
     @Bean
-    public ServletContextInitializer initializer()
-    {
-        return new ServletContextInitializer()
-        {
+    public ServletContextInitializer initializer() {
+        return new ServletContextInitializer() {
             @Override
             public void onStartup(ServletContext servletContext) throws ServletException {
                 servletContext.setInitParameter("tapestry.app-package", "com.example");
                 servletContext.setInitParameter("tapestry.development-modules", "com.example.services.DevelopmentModule");
-                servletContext.setInitParameter("tapestry.qa-modules", "com.foo.services.QaModule");
+                servletContext.setInitParameter("tapestry.qa-modules", "com.example.services.QaModule");
                 //servletContext.setInitParameter("tapestry.use-external-spring-context", "true");
                 servletContext.addFilter("app", TapestryFilter.class).addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST, DispatcherType.ERROR), false, "/*");
                 //servletContext.addFilter("app", TapestrySpringFilter.class).addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST, DispatcherType.ERROR), false, "/*");
@@ -40,8 +37,7 @@ public class AppConfiguration
     }
 
     @Bean
-    public ConfigurableServletWebServerFactory webServerFactory()
-    {
+    public ConfigurableServletWebServerFactory webServerFactory() {
         TomcatServletWebServerFactory factory = new TomcatServletWebServerFactory();
         factory.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND, "/error404"));
         return factory;
