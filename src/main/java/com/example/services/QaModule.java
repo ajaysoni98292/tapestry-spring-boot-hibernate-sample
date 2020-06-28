@@ -34,6 +34,6 @@ public class QaModule
 
     public static void contributeComponentClassResolver(Configuration<LibraryMapping> configuration)
     {
-        configuration.add(new LibraryMapping("test", "com.example.tapestry-sample"));
+        configuration.add(new LibraryMapping("test", "com.example"));
     }
 }

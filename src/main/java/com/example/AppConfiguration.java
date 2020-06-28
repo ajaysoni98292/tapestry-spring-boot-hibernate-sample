@@ -17,7 +17,7 @@ import javax.servlet.SessionTrackingMode;
 import java.util.EnumSet;
 
 @Configuration
-@ComponentScan({ "com.example.tapestry-sample" })
+@ComponentScan({ "com.example" })
 public class AppConfiguration
 {
 
@@ -28,8 +28,8 @@ public class AppConfiguration
         {
             @Override
             public void onStartup(ServletContext servletContext) throws ServletException {
-                servletContext.setInitParameter("tapestry.app-package", "com.example.tapestry-sample");
-                servletContext.setInitParameter("tapestry.development-modules", "com.example.tapestry-sample.services.DevelopmentModule");
+                servletContext.setInitParameter("tapestry.app-package", "com.example");
+                servletContext.setInitParameter("tapestry.development-modules", "com.example.services.DevelopmentModule");
                 servletContext.setInitParameter("tapestry.qa-modules", "com.foo.services.QaModule");
                 //servletContext.setInitParameter("tapestry.use-external-spring-context", "true");
                 servletContext.addFilter("app", TapestryFilter.class).addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST, DispatcherType.ERROR), false, "/*");
